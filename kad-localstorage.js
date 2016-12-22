@@ -5,6 +5,9 @@ module.exports = KadLocalStorage
 var EventEmitter = require('events').EventEmitter
 
 function KadLocalStorage(namespace) {
+  if (!(this instanceof KadLocalStorage)) {
+    return new KadLocalStorage(namespace)
+  }
   if(namespace.indexOf('_') >= 0) throw new Error('invalid namespace')
   this._prefix = namespace + '_'
 }
